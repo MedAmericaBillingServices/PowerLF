@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<ModuleObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" fVersion="1.1" type="Binary" mclass="Module" useSupports="false">
+  <Name>PowerLFRepository</Name>
+  <Version>1.0</Version>
+  <Description />
+  <HasManifest>true</HasManifest>
+  <OverridePostCount>false</OverridePostCount>
+  <FetchPostCount xsi:nil="true" />
+  <Cmdlets>
+    <CmdletObject verb="Get" noun="LFTrustee">
+      <Name>Get-LFTrustee</Name>
+      <Syntax>
+        <string>Get-LFTrustee [-ActiveDirectory] [-Name &lt;String&gt;] [-Session &lt;LFSession&gt;]</string>
+      </Syntax>
+      <GeneralHelp>
+        <Synopsis />
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="Active Directory" Params="ActiveDirectory Name Session Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Parameters>
+        <ParameterDescription type="LFSession" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Session</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>ActiveDirectory</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>Name</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Get" noun="LFUser">
+      <Name>Get-LFUser</Name>
+      <Syntax>
+        <string>Get-LFUser [-Session &lt;LFSession&gt;] [-Username &lt;String&gt;]</string>
+      </Syntax>
+      <GeneralHelp>
+        <Synopsis />
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Session Username Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Parameters>
+        <ParameterDescription type="LFSession" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Session</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Username</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="New" noun="LFSession">
+      <Name>New-LFSession</Name>
+      <Syntax>
+        <string>New-LFSession [-ComputerName] &lt;String&gt; [-Repository] &lt;String&gt; [[-Credential] &lt;PSCredential&gt;] [-NotDefault]</string>
+      </Syntax>
+      <GeneralHelp>
+        <Synopsis />
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ComputerName Repository Credential NotDefault Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
+          <Name>ComputerName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="1" globbing="false">
+          <Name>Repository</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="PSCredential" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
+          <Name>Credential</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>NotDefault</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="New" noun="LFTrustee">
+      <Name>New-LFTrustee</Name>
+      <Syntax>
+        <string>New-LFTrustee [-ActiveDirectory] [-Name] &lt;String&gt; [[-FeatureRights] &lt;String[]&gt; {None | Scan | Export | Print | Search | Delete | Import | AddTemplate | AddVolume | Move | Process | Edit | AssignTemplate | Migrate | GetInformation | ApplyWaterMarks | AllTagFeatureRights | All} ] [-Session &lt;LFSession&gt;]</string>
+      </Syntax>
+      <GeneralHelp>
+        <Synopsis>Adds a new Trustee to a Laserfiche Repository</Synopsis>
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="ActiveDirectory" Params="ActiveDirectory Name FeatureRights Session Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Parameters>
+        <ParameterDescription type="LFSession" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Session</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Laserfiche Session to create the user with (will use the default session if not passed)</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>ActiveDirectory</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Forces creation of an Active Directory Trustee (default if -Identity is passed)</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>Name</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Name of the Trustee's account in the approrpiate directory store</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="1" globbing="false">
+          <Name>FeatureRights</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Feature rights to assign to the newly created trustee</Description>
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples>
+        <Example>
+          <Name>Adding Active Directory Trustee</Name>
+          <Cmd>New-LFTrustee -Identity "CONTOSO\user"</Cmd>
+          <Description />
+          <Output />
+        </Example>
+      </Examples>
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Remove" noun="LFTrustee">
+      <Name>Remove-LFTrustee</Name>
+      <Syntax>
+        <string>Remove-LFTrustee [-Session &lt;LFSession&gt;] [-ActiveDirectory] -Identity &lt;List`1[String]&gt;</string>
+      </Syntax>
+      <GeneralHelp>
+        <Synopsis />
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="ActiveDirectory" Params="Session ActiveDirectory Identity Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Parameters>
+        <ParameterDescription type="LFSession" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Session</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>ActiveDirectory</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="List`1[String]" varLen="true" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>Identity</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+  </Cmdlets>
+</ModuleObject>

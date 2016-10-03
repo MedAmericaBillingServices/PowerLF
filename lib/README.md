@@ -1,0 +1,1 @@
+Copy LicenseManagerObjects.dll from your Laserfiche Directory Server installation to this folder to build

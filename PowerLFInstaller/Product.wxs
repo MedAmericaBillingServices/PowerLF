@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?if $(var.Platform) = x64 ?>
+  <?define ProductName = "PowerLF (64 bit)" ?>
+  <?define Win64 = "yes" ?>
+  <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+  <?define UpgradeCode = "77317849-E50A-4D77-ADA3-8BCA9AC24FCA" ?>
+  <?else ?>
+  <?define ProductName = "PowerLF" ?>
+  <?define Win64 = "no" ?>
+  <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+  <?define UpgradeCode = "F1AE078D-2A15-4498-A80D-1E90CA74D4F1" ?>
+  <?endif ?>
+  <Product Id="*" Name="$(var.ProductName)" Language="1033" Version="0.1.0.0"
+           Manufacturer="MedAmerica Billing Services, Inc."
+           UpgradeCode="$(var.UpgradeCode)">
+    <Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <Media Id="1" EmbedCab="yes" Cabinet="PowerLF.cab" />
+
+    <UIRef Id="WixUI_Minimal" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+
+    <Feature Id="LaserficheSDK" Title="Laserfiche SDK Runtime" AllowAdvertise="no" Display="hidden" Level="1">
+      <MergeRef Id="LaserficheSDK" />
+
+      <Feature Id="iTextAsian" Title="iTextAsian" AllowAdvertise="no" Display="hidden" Level="1">
+        <MergeRef Id="iTextAsian" />
+      </Feature>
+
+      <Feature Id="iTextSharp" Title="iTextSharp" AllowAdvertise="no" Display="hidden" Level="1">
+        <MergeRef Id="iTextSharp" />
+      </Feature>
+
+      <Feature Id="LaserficheICUNative" Title="Laserfiche ICU Native" AllowAdvertise="no" Display="hidden" Level="1">
+        <MergeRef Id="LFICUSxS" />
+      </Feature>
+    </Feature>
+
+    <Feature Id="LaserficheWorkflowSDK" Title="Laserfiche Workflow SDK Runtime" AllowAdvertise="no" Display="hidden"
+             Level="1">
+      <MergeRef Id="LaserficheWorkflowSDK" />
+    </Feature>
+
+    <Feature Id="PowerLFRepository" Title="PowerLF Repository Support" Level="1">
+      <ComponentGroupRef Id="PowerLFRepository" />
+    </Feature>
+
+    <Feature Id="PowerLFServer" Title="PowerLF Repository Management Support" Level="1">
+      <ComponentGroupRef Id="PowerLFServer" />
+    </Feature>
+
+    <Feature Id="PowerLFLicensing" Title="PowerLF Directory Server Support" Level="1">
+      <ComponentGroupRef Id="PowerLFLicensing" />
+    </Feature>
+
+    <Feature Id="PowerLFWorkflow" Title="PowerLF Workflow Support" Level="1">
+      <ComponentGroupRef Id="PowerLFWorkflow" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="$(var.PlatformProgramFilesFolder)">
+        <Directory Id="INSTALLFOLDER" Name="PowerLF">
+          <Directory Id="MODULEPATH" Name="Modules">
+            <Directory Id="POWERLFREPOSITORYPATH" Name="PowerLFRepository" />
+            <Directory Id="POWERLFLICENSINGPATH" Name="PowerLFLicensing" />
+            <Directory Id="POWERLFSERVERPATH" Name="PowerLFServer" />
+            <Directory Id="POWERLFWORKFLOWPATH" Name="PowerLFWorkflow" />
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Merge Id="iTextAsian" SourceFile="C:\Program Files\Laserfiche\SDK 9.2\msm\iTextAsian.msm" DiskId="1"
+             Language="0" />
+
+      <Merge Id="iTextSharp" SourceFile="C:\Program Files\Laserfiche\SDK 9.2\msm\iTextSharp417.msm" DiskId="1"
+             Language="0" />
+
+      <?if $(var.Platform) = x64 ?>
+
+      <Merge Id="LaserficheSDK" SourceFile="C:\Program Files\Laserfiche\SDK 9.2\msm\LFNet4SDK92-x64.msm" DiskId="1"
+             Language="0" />
+
+      <Merge Id="LFICUSxS" SourceFile="C:\Program Files\Laserfiche\SDK 9.2\msm\ICU531SxS-x64.msm" DiskId="1"
+             Language="0" />
+      <?else?>
+
+      <Merge Id="LaserficheSDK" SourceFile="C:\Program Files\Laserfiche\SDK 9.2\msm\LFNet4SDK92-Win32.msm" DiskId="1"
+             Language="0" />
+
+      <Merge Id="LFICUSxS" SourceFile="C:\Program Files\Laserfiche\SDK 9.2\msm\ICU531SxS-Win32.msm" DiskId="1"
+             Language="0" />
+
+      <?endif?>
+
+      <Merge Id="LaserficheWorkflowSDK" SourceFile="C:\Program Files\Laserfiche\Laserfiche Workflow 10\SDK\WFSO.msm"
+             DiskId="1" Language="1033" />
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="PowerLFRepository" Directory="POWERLFREPOSITORYPATH">
+      <Component Id="PowerLFRepository.psd1">
+        <File Id="PowerLFRepository.psd1" Name="PowerLFRepository.psd1"
+              Source="$(var.PowerLFRepository.TargetDir)PowerLFRepository.psd1" DiskId="1" />
+      </Component>
+      <Component Id="PowerLFRepository.dll">
+        <File KeyPath="yes" Id="PowerLFRepository.dll" Name="$(var.PowerLFRepository.TargetFileName)"
+              Source="$(var.PowerLFRepository.TargetPath)" DiskId="1" />
+        <Environment Id="AppendPSModulePath" Action="set" Name="PSModulePath" Part="last" System="yes"
+                     Value="[INSTALLFOLDER]Modules" />
+      </Component>
+      <Component>
+        <File Id="PowerLFRepository.dll_help.xml" Name="$(var.PowerLFRepository.TargetFileName)-help.xml"
+              Source="$(var.PowerLFRepository.TargetDir)$(var.PowerLFRepository.TargetFileName)-help.xml" DiskId="1" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="PowerLFLicensing" Directory="POWERLFLICENSINGPATH">
+      <Component Id="PowerLFLicensing.dll">
+        <File KeyPath="yes" Id="PowerLFLicensing.dll" Name="$(var.PowerLFLicensing.TargetFileName)"
+              Source="$(var.PowerLFLicensing.TargetPath)" DiskId="1" />
+      </Component>
+      <Component Id="LicenseManagerObjects.dll">
+        <File Id="LicenseManagerObjects.dll" Name="LicenseManagerObjects.dll"
+              Source="$(var.SolutionDir)\lib\LicenseManagerObjects.dll" DiskId="1" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="PowerLFServer" Directory="POWERLFSERVERPATH">
+      <Component Id="PowerLFServer.dll">
+        <File Id="PowerLFServer.dll" Name="$(var.PowerLFServer.TargetFileName)"
+              Source="$(var.PowerLFServer.TargetPath)"
+              DiskId="1" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="PowerLFWorkflow" Directory="POWERLFWORKFLOWPATH">
+      <Component Id="PowerLFWorkflow.dll">
+        <File Id="PowerLFWorkflow.dll" Name="$(var.PowerLFWorkflow.TargetFileName)"
+              Source="$(var.PowerLFWorkflow.TargetPath)"
+              DiskId="1" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
