@@ -67,6 +67,7 @@
     <Compile Include="Data\ILFPrincipal.cs" />
     <Compile Include="Data\LFTrustee.cs" />
     <Compile Include="Data\LFUser.cs" />
+    <Compile Include="Data\LFVolumeInfo.cs" />
     <Compile Include="GetLFTrustee.cs" />
     <Compile Include="GetLFUser.cs" />
     <Compile Include="LFSession.cs" />
