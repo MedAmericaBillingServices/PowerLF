@@ -150,6 +150,16 @@
               Source="$(var.PowerLFWorkflow.TargetPath)"
               DiskId="1" />
       </Component>
+      <Component Id="PowerLFWorkflow.psd1">
+        <File Id="PowerLFWorkflow.psd1" Name="PowerLFWorkflow.psd1"
+              Source="$(var.PowerLFWorkflow.TargetDir)PowerLFWorkflow.psd1"
+              DiskId="1" />
+      </Component>
+      <Component Id="Workflow_Newtonsoft.Json.dll">
+        <File Id="Workflow_Newtonsoft.Json.dll" Name="Newtonsoft.Json.dll"
+              Source="$(var.PowerLFWorkflow.TargetDir)Newtonsoft.Json.dll"
+              DiskId="1" />
+      </Component>
     </ComponentGroup>
   </Fragment>
 </Wix>
